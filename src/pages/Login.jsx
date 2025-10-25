@@ -57,22 +57,23 @@ export default function Login() {
       <form onSubmit={handleLogin}>
         <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="Email" className="input w-full mb-2" required />
         <div className="relative mb-2">
-  <input
-    value={password}
-    onChange={(e)=>setPassword(e.target.value)}
-    type={showPass ? "text" : "password"}
-    placeholder="Password"
-    className="input w-full"
-    required
-  />
-  <button
-    type="button"
-    onClick={()=>setShowPass(s=>!s)}
-    className="absolute right-2 top-2 text-sm"
-  >
-    {showPass ? "Hide" : "Show"}
+      <input
+         value={password}
+         onChange={(e) => setPassword(e.target.value)}
+         type={showPass ? "text" : "password"}
+         placeholder="Password"
+         className="input w-full"
+         required
+      />
+      <button
+       type="button"
+       onClick={() => setShowPass(s => !s)}
+       className="absolute right-2 top-2 text-xl text-gray-600"
+       >   
+    {showPass ? <AiFillEyeInvisible /> : <AiFillEye />}
   </button>
 </div>
+
 
         <div className="flex justify-between items-center">
           <button type="submit" className="btn bg-orange-500 py-5 px-8 text-white">Login</button>
