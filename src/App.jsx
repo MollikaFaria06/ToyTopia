@@ -11,7 +11,7 @@ import Favorites from "./pages/Favorites";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AllToys from "./pages/AllToys";
-
+import ForgotPassword from "./pages/ForgetPassword";
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -24,6 +24,7 @@ function App() {
           <Route path="/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} /> 
           <Route path="/all-toys" element={<AllToys />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
