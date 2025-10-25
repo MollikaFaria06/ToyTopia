@@ -78,14 +78,14 @@ export default function Navbar() {
           {user ? (
             <button
               onClick={handleLogout}
-              className="btn btn-sm bg-orange-500 hover:bg-orange-600 text-white font-semibold"
+              className="btn btn-sm bg-orange-500 hover:bg-orange-600 w-[120px]  text-white text-lg py-5 font-semibold"
             >
               Logout
             </button>
           ) : (
             <NavLink
               to="/login"
-              className="btn btn-sm bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6"
+              className="btn btn-sm bg-orange-500 hover:bg-orange-600 w-[120px] text-white text-lg py-5 font-semibold px-6"
             >
               Login
             </NavLink>
