@@ -26,7 +26,7 @@ export default function Profile() {
   if (!user) return null;
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-6 rounded shadow">
+    <div className="max-w-lg mx-auto bg-yellow-200 p-6 rounded shadow">
       <h2 className="text-3xl text-blue-800 font-bold mb-4">My Profile</h2>
       <img src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName}`} alt="avatar" className="w-24 h-24 rounded-full mb-4" />
       <form onSubmit={onSave}>

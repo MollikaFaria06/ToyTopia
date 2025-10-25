@@ -6,7 +6,7 @@ export default function Events() {
   }, []);
 
   return (
-    <div className="p-10 bg-green-50 min-h-screen">
+    <div className="p-10 bg-yellow-200 min-h-screen">
       <h1 className="text-4xl font-bold text-center text-green-700 mb-6">
         🎪 ToyTopia Events
       </h1>

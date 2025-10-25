@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ToyCard from "../components/ToyCard/ToyCard";
 import toyBanner from "../assets/toyBanner.jpg";
+import slide1 from "../assets/slide1.png";
+import slide2 from "../assets/slide2.png";
+import slide3 from "../assets/slide3.png";
 
 export default function Home() {
   const [toys, setToys] = useState([]);
@@ -16,20 +19,21 @@ export default function Home() {
 
   const popular = toys.slice(0, 9);
 
-  // Dummy data for events & sellers
   const events = [
     {
       id: 1,
       name: "Dhaka Kids Toy Fair 2025",
       date: "December 10, 2025",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Z0sSUE52k5ym1K0iMbljNNaXNaC2HfqVkA&s",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Z0sSUE52k5ym1K0iMbljNNaXNaC2HfqVkA&s",
       location: "Bangabandhu International Center, Dhaka",
     },
     {
       id: 2,
       name: "Creative Toy Workshop",
       date: "November 15, 2025",
-      image: "https://img.freepik.com/premium-vector/creative-workshop-children-applique-draw-make-plasticine-knitting-embroidery-template-banner-educational-courses-children-hand-drawn-illustration-modern-cartoon-flat-style_318237-99.jpg?semt=ais_hybrid&w=740&q=80",
+      image:
+        "https://img.freepik.com/premium-vector/creative-workshop-children-applique-draw-make-plasticine-knitting-embroidery-template-banner-educational-courses-children-hand-drawn-illustration-modern-cartoon-flat-style_318237-99.jpg?semt=ais_hybrid&w=740&q=80",
       location: "ToyTopia HQ, Lalbagh",
     },
   ];
@@ -56,124 +60,165 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-12">
-      {/* Banner Section */}
-      <section className="mb-8">
-        <div className="bg-yellow-300 rounded p-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h1 className="text-5xl text-green-700 font-bold">
-              Play, Learn, and Grow with{" "}
-              <strong className="text-blue-900">ToyTopia!</strong>
-            </h1>
-            <p className="mt-4 text-green-700 font-semibold leading-relaxed">
-              ToyTopia is a vibrant online marketplace where fun meets trust! 🎈
-              We connect families with local toy sellers, helping parents find
-              safe, creative, and affordable toys for their little ones. Our
-              goal is to make playtime more joyful while supporting small
-              businesses that bring imagination to life.
-            </p>
-            <Link
-              to="/all-toys"
-              className="btn py-3 px-6 mt-4 bg-orange-500 text-white text-lg"
-            >
-              Explore Toys
-            </Link>
+    <div className="space-y-12 px-4 md:px-8 lg:px-16">
+      {/* Slider Section */}
+      <section className="carousel w-full rounded-lg overflow-hidden shadow-lg">
+        {[slide1, slide2, slide3].map((slide, index) => (
+          <div
+            key={index}
+            id={`slide${index + 1}`}
+            className="carousel-item relative w-full"
+          >
+            <img
+              src={slide}
+              alt={`slide${index + 1}`}
+              className="block w-full object-cover h-64 sm:h-80 md:h-96 lg:h-[500px]"
+            />
+            <div className="absolute flex flex-col justify-center items-center inset-0 bg-yellow-200 bg-opacity-50 text-black text-center p-4 md:p-6 z-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+                {index === 0
+                  ? "Play & Learn with ToyTopia 🎈"
+                  : index === 1
+                  ? "Local Sellers, Trusted Toys 🧸"
+                  : "New Arrivals — Check Them Out 🚀"}
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg">
+                {index === 0
+                  ? "Discover toys that inspire creativity and fun for every child."
+                  : index === 1
+                  ? "Support small businesses that care about quality and safety."
+                  : "Stay updated with the latest toys loved by kids everywhere!"}
+              </p>
+            </div>
+            <div className="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2 z-20">
+              <a
+                href={`#slide${index === 0 ? 3 : index}`}
+                className="btn btn-circle btn-sm sm:btn-md"
+              >
+                ❮
+              </a>
+              <a
+                href={`#slide${index === 2 ? 1 : index + 2}`}
+                className="btn btn-circle btn-sm sm:btn-md"
+              >
+                ❯
+              </a>
+            </div>
           </div>
-          <img
-            src={toyBanner}
-            alt="toy banner"
-            className="w-[600px] h-[300px] object-contain"
-          />
-        </div>
+        ))}
       </section>
 
-      {/* Popular Toys */}
+      {/* Banner Section */}
+<section className="mb-8">
+  <div className="bg-yellow-300 rounded p-6 md:p-10 flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 shadow-lg">
+    
+    {/* Text Content */}
+    <div className="md:flex-1 min-w-0">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl text-green-700 font-bold">
+        Play, Learn, and Grow with{" "}
+        <strong className="text-blue-900">ToyTopia!</strong>
+      </h1>
+      <p className="mt-4 text-green-700 font-semibold leading-relaxed text-sm sm:text-base md:text-lg">
+        ToyTopia is a vibrant online marketplace where fun meets trust! 🎈
+        We connect families with local toy sellers, helping parents find
+        safe, creative, and affordable toys for their little ones.
+      </p>
+      <Link
+        to="/all-toys"
+        className="btn py-2 sm:py-3 px-4 sm:px-6 mt-4 bg-orange-500 text-white text-base sm:text-lg hover:bg-orange-600 transition"
+      >
+        Explore Toys
+      </Link>
+    </div>
+
+    {/* Banner Image */}
+    <div className="md:flex-1 flex justify-center md:justify-end">
+      <img
+        src={toyBanner}
+        alt="toy banner"
+        className="w-full max-w-[500px] sm:max-w-[550px] md:max-w-[65%] lg:max-w-[600px] h-auto object-contain"
+      />
+    </div>
+  </div>
+</section>
+
+
+
+      {/*  Popular Toys Section */}
       <section>
-        <h2 className="text-3xl font-bold mb-4 text-left text-white">
+        <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-4 text-left text-white">
           Popular Toys
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {popular.map((toy) => (
             <ToyCard key={toy.toyId} toy={toy} />
           ))}
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
-<section className="mt-12 p-6 bg-green-100 rounded shadow">
-  <h2 className="text-3xl text-black font-bold mb-4 text-center">
-    🎪 Upcoming Events
-  </h2>
-  <p className="text-center text-gray-700 mb-8 max-w-2xl mx-auto">
-    Stay tuned for fun-filled events and creative workshops hosted by ToyTopia!  
-    Join us to explore new toys, meet local creators, and spark your child’s imagination. 🌈
-  </p>
+      {/*  Upcoming Events */}
+      <section className="mt-12 p-4 sm:p-6 md:p-8 bg-green-100 rounded shadow">
+        <h2 className="text-2xl sm:text-3xl md:text-3xl text-black font-bold mb-6 text-center">
+          🎪 Upcoming Events
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {events.map((event) => (
+            <div
+              key={event.id}
+              className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition"
+            >
+              <img
+                src={event.image}
+                alt={event.name}
+                className="w-full h-40 sm:h-48 object-cover rounded mb-4"
+              />
+              <h3 className="text-xl sm:text-lg md:text-xl font-bold text-orange-600 mb-2">
+                {event.name}
+              </h3>
+              <p className="text-gray-700 font-semibold">{event.date}</p>
+              <p className="text-gray-600 mb-3">{event.location}</p>
+              <Link
+                to="/events"
+                className="mt-auto bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition text-center text-sm sm:text-base"
+              >
+                Learn More
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {events.map((event) => (
-      <div
-        key={event.id}
-        className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
-      >
-        <img
-          src={event.image}
-          alt={event.name}
-          className="w-full h-48 object-cover rounded mb-4"
-        />
-        <h3 className="text-xl font-bold text-orange-600 mb-2">
-          {event.name}
-        </h3>
-        <p className="text-gray-700 font-semibold">{event.date}</p>
-        <p className="text-gray-600 mb-3">{event.location}</p>
-        <Link
-          to="/events"
-          className="mt-auto bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
-        >
-          Learn More
-        </Link>
-      </div>
-    ))}
-  </div>
-</section>
-
-
-      {/* Featured Sellers Section */}
-<section className="mt-12 p-6 bg-orange-100 rounded shadow">
-  <h2 className="text-3xl text-black font-bold mb-6 text-center">
-    🏆 Featured Sellers
-  </h2>
-  <p className="text-center text-gray-700 mb-8 max-w-2xl mx-auto">
-    Meet our top-rated local sellers who bring joy, creativity, and quality to every toy they make.
-    Each one is trusted by parents and loved by kids across Bangladesh! 💛
-  </p>
-  
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {sellers.map((seller) => (
-      <div
-        key={seller.id}
-        className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition"
-      >
-        <img
-          src={seller.image}
-          alt={seller.name}
-          className="w-32 h-32 object-cover rounded-full mb-3 border-4 border-orange-400"
-        />
-        <h3 className="text-xl font-bold text-green-700 mb-1">
-          {seller.name}
-        </h3>
-        <p className="text-gray-600 mb-2">⭐ {seller.rating} / 5</p>
-        <p className="text-gray-700 text-sm">
-          {seller.id === 1
-            ? "Specializes in eco-friendly educational toys for toddlers."
-            : seller.id === 2
-            ? "Offers creative building blocks and puzzle sets for young explorers."
-            : "Known for soft plushies and imaginative play sets that spark creativity."}
-        </p>
-      </div>
-    ))}
-  </div>
-</section>
-
+      {/*  Featured Sellers */}
+      <section className="mt-12 p-4 sm:p-6 md:p-8 bg-orange-100 rounded shadow">
+        <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6 text-black text-center">
+          🏆 Featured Sellers
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {sellers.map((seller) => (
+            <div
+              key={seller.id}
+              className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition"
+            >
+              <img
+                src={seller.image}
+                alt={seller.name}
+                className="w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 object-cover rounded-full mb-3 border-4 border-orange-400"
+              />
+              <h3 className="text-lg sm:text-xl md:text-xl font-bold text-green-700 mb-1">
+                {seller.name}
+              </h3>
+              <p className="text-gray-600 mb-2">⭐ {seller.rating} / 5</p>
+              <p className="text-gray-700 text-sm sm:text-base">
+                {seller.id === 1
+                  ? "Specializes in eco-friendly educational toys for toddlers."
+                  : seller.id === 2
+                  ? "Offers creative building blocks and puzzle sets for young explorers."
+                  : "Known for soft plushies and imaginative play sets that spark creativity."}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

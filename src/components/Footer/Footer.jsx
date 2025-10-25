@@ -5,13 +5,16 @@ export default function Footer() {
   return (
     <footer className="bg-yellow-400 text-black mt-8 py-8">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Brand Section */}
+
         <div>
           <h4 className="font-bold text-xl mb-2">ToyTopia</h4>
           <p className="text-gray-800">Discover & support local toy sellers.</p>
+           <p className="text-gray-800">
+    Play, Learn, and Grow with the best toys in Bangladesh! 🎈
+  </p>
         </div>
 
-        {/* Quick Links */}
+      
         <div>
           <h4 className="font-bold text-xl mb-2">Quick Links</h4>
           <ul className="space-y-1 text-gray-800">
@@ -27,7 +30,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Social Media */}
         <div>
           <h4 className="font-bold text-xl mb-2">Follow Us</h4>
           <div className="flex gap-3 mt-2">

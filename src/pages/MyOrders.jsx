@@ -15,7 +15,7 @@ export default function MyOrders() {
   if (!user) return null;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded shadow">
+    <div className="max-w-4xl mx-auto p-6 bg-yellow-200 rounded shadow">
       <h2 className="text-3xl font-bold text-blue-800 mb-4">My Orders</h2>
       {orders.length === 0 ? (
         <p className="text-gray-700">You have no orders yet.</p>
