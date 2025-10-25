@@ -1,80 +1,79 @@
 import React, { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const onLogout = async () => {
+  const handleLogout = async () => {
     await logout();
-    navigate("/");
+    navigate("/login");
   };
 
   return (
-    <nav className="bg-yellow-400 py-5 px-4 shadow">
-      <div className="container mx-auto flex items-center px-4">
-        
-      
-        <div className="flex items-center gap-6">
-          <Link to="/" className="text-4xl font-bold text-indigo-700">
-            ToyTopia
-          </Link>
-        </div>
+    <nav className="bg-yellow-400 py-4 shadow-md">
+      <div className="container mx-auto flex justify-between items-center px-4">
+        <NavLink
+          to="/"
+          className="text-3xl font-extrabold text-indigo-700 hover:text-indigo-800 transition"
+        >
+          ToyTopia
+        </NavLink>
 
-        <div className="flex-1 flex justify-center gap-8">
+        <div className="flex items-center gap-12">
           <NavLink
             to="/"
             end
             className={({ isActive }) =>
               isActive
-                ? "text-blue-500 font-bold text-lg  px-3 py-2"
-                : "text-white font-normal text-lg  px-3 py-2"
+                ? "text-blue-700 font-bold border-b-2 border-blue-700 pb-1"
+                : "text-white hover:text-blue-200 transition"
             }
           >
             Home
           </NavLink>
 
           <NavLink
-            to="/login"
+            to="/profile"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-500 font-bold text-lg px-3 py-2"
-                : "text-white font-normal text-lg  px-3 py-2"
+                ? "flex items-center gap-2 text-blue-700 font-bold border-b-2 border-blue-700 pb-1"
+                : "flex items-center gap-2 text-white hover:text-blue-200 transition"
             }
           >
-            Favorites
-          </NavLink>
-        </div>
-
-        <div className="flex items-center gap-4">
-          {user ? (
-            <div className="flex items-center gap-3">
-              <div className="relative group">
-                <img
-                  src={
-                    user.photoURL ||
-                    `https://ui-avatars.com/api/?name=${user.displayName || "User"}`
-                  }
-                  alt="avatar"
-                  className="w-10 h-10 rounded-full object-cover border-2 border-white shadow"
-                />
-                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 bg-white p-2 rounded shadow hidden group-hover:block">
-                  <span className="text-sm">{user.displayName || "No Name"}</span>
+            My Profile
+            <div className="relative group">
+              <img
+                src={
+                  user?.photoURL ||
+                  "https://citizensadvicecbg.org.uk/wp-content/uploads/citizens-advice-placeholder-female.jpg"
+                }
+                alt="Profile"
+                className="w-8 h-8 rounded-full object-cover border-2 border-white shadow cursor-pointer"
+              />
+              {user && (
+                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 bg-white p-2 rounded shadow-md text-sm text-gray-700 hidden group-hover:block whitespace-nowrap">
+                  {user.displayName || "No Name"}
                 </div>
-              </div>
-              <button onClick={onLogout} className="btn btn-sm btn-ghost">
-                Logout
-              </button>
+              )}
             </div>
+          </NavLink>
+
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="btn btn-sm bg-orange-500 hover:bg-orange-600 text-white font-semibold"
+            >
+              Logout
+            </button>
           ) : (
-            <Link
+            <NavLink
               to="/login"
-              className="btn btn-sm bg-orange-500 px-8 py-5 text-white text-lg font-semibold"
+              className="btn btn-sm bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6"
             >
               Login
-            </Link>
+            </NavLink>
           )}
         </div>
       </div>

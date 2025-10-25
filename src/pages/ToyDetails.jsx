@@ -12,7 +12,8 @@ const ToyDetails = () => {
       .then((data) => {
         const found = data.find((t) => t.toyId === id);
         setToy(found);
-      });
+      })
+      .catch(console.error);
   }, [id]);
 
   if (!toy) return <div className="text-center mt-20">Loading...</div>;
@@ -23,30 +24,18 @@ const ToyDetails = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto card bg-base-100 shadow-xl p-8">
-      <img src={toy.pictureURL} alt={toy.toyName} className="h-64 mx-auto mb-4" />
+    <div className="max-w-3xl mx-auto card bg-white shadow-xl p-8">
+      <img src={toy.pictureURL} alt={toy.toyName} className="h-64 mx-auto mb-4 object-contain" />
       <h2 className="text-3xl font-bold text-orange-600 mb-2">{toy.toyName}</h2>
-      <p className="text-gray-700 mb-2">{toy.description}</p>
-      <p><strong>Price:</strong> ${toy.price}</p>
-      <p><strong>Rating:</strong> {toy.rating}</p>
-      <p><strong>Available:</strong> {toy.availableQuantity}</p>
+      <p className="text-green-800 mb-2">{toy.description}</p>
+      <p className="text-yellow-600"><strong>Price:</strong> ${toy.price}</p>
+      <p className="text-yellow-600"><strong>Rating:</strong> {toy.rating}</p>
+      <p className="text-yellow-600"><strong>Available:</strong> {toy.availableQuantity}</p>
 
       <form onSubmit={handleTryNow} className="mt-6 space-y-3">
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="input input-bordered w-full"
-          required
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="input input-bordered w-full"
-          required
-        />
-        <button type="submit" className="btn btn-primary w-full">
-          Try Now
-        </button>
+        <input type="text" placeholder="Your Name" className="input input-bordered w-full" required />
+        <input type="email" placeholder="Your Email" className="input input-bordered w-full" required />
+        <button type="submit" className="btn btn-primary w-full">Try Now</button>
       </form>
     </div>
   );

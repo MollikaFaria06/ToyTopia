@@ -27,7 +27,7 @@ export default function Profile() {
 
   return (
     <div className="max-w-lg mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">My Profile</h2>
+      <h2 className="text-3xl text-blue-800 font-bold mb-4">My Profile</h2>
       <img src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName}`} alt="avatar" className="w-24 h-24 rounded-full mb-4" />
       <form onSubmit={onSave}>
         <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Name" className="input w-full mb-2" />

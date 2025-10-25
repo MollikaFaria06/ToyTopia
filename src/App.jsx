@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Favorites from "./pages/Favorites";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
