@@ -34,6 +34,19 @@ export default function Navbar() {
             Home
           </NavLink>
 
+
+          <NavLink
+              to="/my-orders"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-700 font-bold border-b-2 border-blue-700 pb-1"
+                  : "text-white hover:text-blue-200 transition"
+              }
+              >
+                My Orders
+              </NavLink>
+
+
           <NavLink
             to="/profile"
             className={({ isActive }) =>
@@ -59,6 +72,8 @@ export default function Navbar() {
               )}
             </div>
           </NavLink>
+
+
 
           {user ? (
             <button
