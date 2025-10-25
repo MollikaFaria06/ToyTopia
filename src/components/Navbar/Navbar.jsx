@@ -15,7 +15,7 @@ export default function Navbar() {
     <div className="navbar bg-yellow-400 shadow-md px-4 md:px-8">
      
       <div className="navbar-start">
-        <NavLink to="/" className="text-3xl md:text-3xl font-bold text-blue-700 hover:text-blue-800">
+        <NavLink to="/" className="text-3xl lg:ml-10 md:ml-5 sm:ml-0 md:text-3xl font-bold text-blue-700 hover:text-blue-800">
           ToyTopia
         </NavLink>
       </div>
@@ -148,7 +148,7 @@ export default function Navbar() {
           {user ? (
             <button
               onClick={handleLogout}
-              className="btn btn-sm w-[120px] h-[35px] text-lg bg-orange-500 hover:bg-orange-600 text-white"
+              className="btn btn-sm w-[120px] h-[35px] lg:mr-10 md:mr-5 sm:mr-0 text-lg bg-orange-500 hover:bg-orange-600 text-white"
             >
               Logout
             </button>

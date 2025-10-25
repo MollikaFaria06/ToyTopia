@@ -45,7 +45,7 @@ export default function Register() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded p-6 shadow">
+    <div className="max-w-md mx-auto bg-yellow-200 rounded p-6 shadow">
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Register Here</h2>
       <form onSubmit={onSubmit}>
         <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" className="input w-full mb-2" required />
@@ -77,7 +77,7 @@ export default function Register() {
       </form>
 
       <div className="text-center mt-4">
-        <button onClick={handleGoogle} className="btn btn-outline text-blue-800 bg-yellow-200">Continue with Google</button>
+        <button onClick={handleGoogle} className="btn btn-outline text-blue-800 bg-yellow-400">Continue with Google</button>
       </div>
       <div className="mt-4 text-sm text-blue-800">Already have an account? <Link to="/login" className="underline">Login</Link></div>
     </div>

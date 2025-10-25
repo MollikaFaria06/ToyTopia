@@ -59,92 +59,65 @@ export default function Home() {
     },
   ];
 
+  const slides = [slide1, slide2, slide3];
+
   return (
     <div className="space-y-12 px-4 md:px-8 lg:px-16">
-      {/* Slider Section */}
-      <section className="carousel w-full rounded-lg overflow-hidden shadow-lg">
-        {[slide1, slide2, slide3].map((slide, index) => (
-          <div
-            key={index}
-            id={`slide${index + 1}`}
-            className="carousel-item relative w-full"
-          >
-            <img
-              src={slide}
-              alt={`slide${index + 1}`}
-              className="block w-full object-cover h-64 sm:h-80 md:h-96 lg:h-[500px]"
-            />
-            <div className="absolute flex flex-col justify-center items-center inset-0 bg-yellow-200 bg-opacity-50 text-black text-center p-4 md:p-6 z-10">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-                {index === 0
-                  ? "Play & Learn with ToyTopia 🎈"
-                  : index === 1
-                  ? "Local Sellers, Trusted Toys 🧸"
-                  : "New Arrivals — Check Them Out 🚀"}
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg">
-                {index === 0
-                  ? "Discover toys that inspire creativity and fun for every child."
-                  : index === 1
-                  ? "Support small businesses that care about quality and safety."
-                  : "Stay updated with the latest toys loved by kids everywhere!"}
-              </p>
-            </div>
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2 z-20">
-              <a
-                href={`#slide${index === 0 ? 3 : index}`}
-                className="btn btn-circle btn-sm sm:btn-md"
-              >
-                ❮
-              </a>
-              <a
-                href={`#slide${index === 2 ? 1 : index + 2}`}
-                className="btn btn-circle btn-sm sm:btn-md"
-              >
-                ❯
-              </a>
-            </div>
-          </div>
-        ))}
-      </section>
-
-      {/* Banner Section */}
-<section className="mb-8">
-  <div className="bg-yellow-300 rounded p-6 md:p-10 flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 shadow-lg">
-    
-    {/* Text Content */}
-    <div className="md:flex-1 min-w-0">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl text-green-700 font-bold">
-        Play, Learn, and Grow with{" "}
-        <strong className="text-blue-900">ToyTopia!</strong>
-      </h1>
-      <p className="mt-4 text-green-700 font-semibold leading-relaxed text-sm sm:text-base md:text-lg">
-        ToyTopia is a vibrant online marketplace where fun meets trust! 🎈
-        We connect families with local toy sellers, helping parents find
-        safe, creative, and affordable toys for their little ones.
-      </p>
-      <Link
-        to="/all-toys"
-        className="btn py-2 sm:py-3 px-4 sm:px-6 mt-4 bg-orange-500 text-white text-base sm:text-lg hover:bg-orange-600 transition"
-      >
-        Explore Toys
-      </Link>
-    </div>
-
-    {/* Banner Image */}
-    <div className="md:flex-1 flex justify-center md:justify-end">
+    {/* Slider Section */}
+<section className="carousel w-full  rounded-lg overflow-hidden bg-yellow-200 shadow-lg">
+  {slides.map((slide, index) => (
+    <div key={index} id={`slide${index + 1}`} className="carousel-item relative w-full">
       <img
-        src={toyBanner}
-        alt="toy banner"
-        className="w-full max-w-[500px] sm:max-w-[550px] md:max-w-[65%] lg:max-w-[600px] h-auto object-contain"
-      />
+  src={slide}
+  alt={`slide${index + 1}`}
+  className="block w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-contain"
+/>
+
+      {/* Navigation buttons */}
+      <div className="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2 z-30">
+        <a href={`#slide${index === 0 ? 3 : index}`} className="btn btn-circle btn-sm sm:btn-md">
+          ❮
+        </a>
+        <a href={`#slide${index === 2 ? 1 : index + 2}`} className="btn btn-circle btn-sm sm:btn-md">
+          ❯
+        </a>
+      </div>
     </div>
-  </div>
+  ))}
 </section>
 
 
 
-      {/*  Popular Toys Section */}
+
+      {/* Banner Section */}
+      <section className="mb-8">
+        <div className="bg-yellow-300 rounded p-6 md:p-10 flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 shadow-lg">
+          <div className="md:flex-1 min-w-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl text-green-700 font-bold">
+              Play, Learn, and Grow with <strong className="text-blue-900">ToyTopia!</strong>
+            </h1>
+            <p className="mt-4 text-green-700 font-semibold leading-relaxed text-sm sm:text-base md:text-lg">
+              ToyTopia is a vibrant online marketplace where fun meets trust! 🎈
+              We connect families with local toy sellers, helping parents find safe, creative, and affordable toys for their little ones.
+            </p>
+            <Link
+              to="/all-toys"
+              className="btn py-2 sm:py-3 px-4 sm:px-6 mt-4 bg-orange-500 text-white text-base sm:text-lg hover:bg-orange-600 transition"
+            >
+              Explore Toys
+            </Link>
+          </div>
+          <div className="md:flex-1 flex justify-center md:justify-end">
+            <img
+              src={toyBanner}
+              alt="toy banner"
+              className="w-full max-w-[500px] sm:max-w-[550px] md:max-w-[65%] lg:max-w-[600px] h-auto object-contain"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Toys Section */}
       <section>
         <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-4 text-left text-white">
           Popular Toys
@@ -156,25 +129,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  Upcoming Events */}
-      <section className="mt-12 p-4 sm:p-6 md:p-8 bg-green-100 rounded shadow">
-        <h2 className="text-2xl sm:text-3xl md:text-3xl text-black font-bold mb-6 text-center">
+      {/* Upcoming Events */}
+      <section className="mt-12 mb-12 p-4 sm:p-6 md:p-8 bg-green-100 rounded shadow">
+        <h2 className="text-2xl sm:text-3xl md:text-3xl text-black font-bold mb-10 text-center ">
           🎪 Upcoming Events
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 mb-10 gap-6">
           {events.map((event) => (
-            <div
-              key={event.id}
-              className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition"
-            >
-              <img
-                src={event.image}
-                alt={event.name}
-                className="w-full h-40 sm:h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl sm:text-lg md:text-xl font-bold text-orange-600 mb-2">
-                {event.name}
-              </h3>
+            <div key={event.id} className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition">
+              <img src={event.image} alt={event.name} className="w-full h-40 sm:h-48 object-cover rounded mb-4" />
+              <h3 className="text-xl sm:text-lg md:text-xl font-bold text-orange-600 mb-2">{event.name}</h3>
               <p className="text-gray-700 font-semibold">{event.date}</p>
               <p className="text-gray-600 mb-3">{event.location}</p>
               <Link
@@ -188,25 +152,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  Featured Sellers */}
+      {/* Featured Sellers */}
       <section className="mt-12 p-4 sm:p-6 md:p-8 bg-orange-100 rounded shadow">
         <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6 text-black text-center">
           🏆 Featured Sellers
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 mb-10 md:grid-cols-3 gap-6">
           {sellers.map((seller) => (
-            <div
-              key={seller.id}
-              className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition"
-            >
+            <div key={seller.id} className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition">
               <img
                 src={seller.image}
                 alt={seller.name}
                 className="w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 object-cover rounded-full mb-3 border-4 border-orange-400"
               />
-              <h3 className="text-lg sm:text-xl md:text-xl font-bold text-green-700 mb-1">
-                {seller.name}
-              </h3>
+              <h3 className="text-lg sm:text-xl md:text-xl font-bold text-green-700 mb-1">{seller.name}</h3>
               <p className="text-gray-600 mb-2">⭐ {seller.rating} / 5</p>
               <p className="text-gray-700 text-sm sm:text-base">
                 {seller.id === 1

@@ -37,7 +37,7 @@ export default function Login() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded p-6 shadow">
+    <div className="max-w-md mx-auto bg-yellow-200 rounded p-6 shadow">
       <h2 className="text-3xl text-blue-700 font-bold mb-4">Login Here</h2>
       <form onSubmit={handleLogin}>
         <input
@@ -80,7 +80,7 @@ export default function Login() {
         </div>
       </form>
       <div className="text-center mt-4">
-        <button onClick={handleGoogle} className="btn btn-outline text-blue-800 bg-yellow-200">
+        <button onClick={handleGoogle} className="btn btn-outline text-blue-800 bg-yellow-400">
           Continue with Google
         </button>
       </div>
