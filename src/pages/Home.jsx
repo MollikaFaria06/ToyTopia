@@ -37,7 +37,7 @@ export default function Home() {
                   Support local sellers & find safe toys.
                 </p>
                 <Link
-                  to="/"
+                  to="/all-toys"
                   className="btn py-3 px-6 mt-4 bg-orange-500 text-white text-lg"
                 >
                   Explore Toys

@@ -53,7 +53,7 @@ export default function Navbar() {
                 className="w-8 h-8 rounded-full object-cover border-2 border-white shadow cursor-pointer"
               />
               {user && (
-                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 bg-white p-2 rounded shadow-md text-sm text-gray-700 hidden group-hover:block whitespace-nowrap">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 bg-white p-2 rounded shadow-md text-sm text-gray-700 hidden group-hover:block whitespace-nowrap">
                   {user.displayName || "No Name"}
                 </div>
               )}
