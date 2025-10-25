@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
 
 export default function Login() {
   useEffect(() => { document.title = "ToyTopia | Login"; }, []);
@@ -55,9 +57,23 @@ export default function Login() {
       <form onSubmit={handleLogin}>
         <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="Email" className="input w-full mb-2" required />
         <div className="relative mb-2">
-          <input value={password} onChange={(e)=>setPassword(e.target.value)} type={showPass ? "text" : "password"} placeholder="Password" className="input w-full" required />
-          <button type="button" onClick={()=>setShowPass(s=>!s)} className="absolute right-2 top-2 text-sm">{showPass ? "Hide" : "Show"}</button>
-        </div>
+  <input
+    value={password}
+    onChange={(e)=>setPassword(e.target.value)}
+    type={showPass ? "text" : "password"}
+    placeholder="Password"
+    className="input w-full"
+    required
+  />
+  <button
+    type="button"
+    onClick={()=>setShowPass(s=>!s)}
+    className="absolute right-2 top-2 text-sm"
+  >
+    {showPass ? "Hide" : "Show"}
+  </button>
+</div>
+
         <div className="flex justify-between items-center">
           <button type="submit" className="btn bg-orange-500 py-5 px-8 text-white">Login</button>
           <button type="button" onClick={handleForgot} className="text-sm underline text-blue-800">Forgot password?</button>

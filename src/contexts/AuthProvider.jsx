@@ -48,14 +48,23 @@ const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-
-// Add inside AuthProvider
+// resetpassword
 const resetPassword = async (email) => {
   setLoading(true);
   try {
     await sendPasswordResetEmail(auth, email);
   } finally {
     setLoading(false);
+  }
+};
+
+// Update function
+const updateUserProfile = async ({ displayName, photoURL }) => {
+  if (auth.currentUser) {
+    await updateProfile(auth.currentUser, { displayName, photoURL });
+    setUser({ ...auth.currentUser });
+  } else {
+    throw new Error("No user logged in");
   }
 };
 
@@ -76,6 +85,7 @@ const resetPassword = async (email) => {
     loginWithGoogle,
      resetPassword,
     logout,
+    updateUserProfile,
     auth
   };
 
