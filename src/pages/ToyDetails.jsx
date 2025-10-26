@@ -55,9 +55,9 @@ const ToyDetails = () => {
   return (
     <div className="space-y-8 px-4 md:px-8 lg:px-16">
       <h2
-        className="text-3xl max-w-3xl mx-auto text-white font-bold mb-4"
-        data-aos="fade-down"
-      >
+        className="text-3xl max-w-3xl mx-auto  font-bold mb-4"
+        data-aos="fade-down">
+      
         Toy Details
       </h2>
 

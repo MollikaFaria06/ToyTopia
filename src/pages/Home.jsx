@@ -154,7 +154,7 @@ export default function Home() {
 
       {/* Popular Toys Section */}
       <section data-aos="fade-up" data-aos-duration="1000">
-        <h2 className="text-3xl font-bold text-white mb-4">Popular Toys</h2>
+        <h2 className="text-3xl font-bold mb-4">Popular Toys</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {popular.map((toy) => (
             <div data-aos="zoom-in" key={toy.toyId}>
