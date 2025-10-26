@@ -73,4 +73,5 @@ npm install sweetalert2 react-toastify react-icons
 ## 💻 Developer
 
 💻 Developed by Faria Alam ✨
-🌟 Frontend Developer
+
+
