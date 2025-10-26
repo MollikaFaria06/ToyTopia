@@ -13,7 +13,6 @@ The goal of ToyTopia is to create a fun, safe, and engaging online platform wher
 - Families can find quality toys from trusted local sellers.  
 - Local toy businesses can reach a wider audience.  
 - Kids can explore new toys that help them learn and grow creatively.
-
 ---
 
 ## ✨ Key Features
@@ -74,3 +73,4 @@ npm install sweetalert2 react-toastify react-icons
 ## 💻 Developer
 
 💻 Developed by Faria Alam ✨
+🌟 Frontend Developer
