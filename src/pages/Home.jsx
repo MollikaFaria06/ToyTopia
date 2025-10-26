@@ -5,9 +5,14 @@ import toyBanner from "../assets/toyBanner.jpg";
 import slide1 from "../assets/slide1.png";
 import slide2 from "../assets/slide2.png";
 import slide3 from "../assets/slide3.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Home() {
   const [toys, setToys] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [slide1, slide2, slide3];
 
   useEffect(() => {
     document.title = "ToyTopia | Home";
@@ -16,6 +21,14 @@ export default function Home() {
       .then(setToys)
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
+  useEffect(() => {
+    AOS.refresh();
+  }, [currentSlide]);
 
   const popular = toys.slice(0, 9);
 
@@ -59,46 +72,65 @@ export default function Home() {
     },
   ];
 
-  const slides = [slide1, slide2, slide3];
-
   return (
     <div className="space-y-12 px-4 md:px-8 lg:px-16">
-    {/* Slider Section */}
-<section className="carousel w-full  rounded-lg overflow-hidden bg-yellow-200 shadow-lg">
-  {slides.map((slide, index) => (
-    <div key={index} id={`slide${index + 1}`} className="carousel-item relative w-full">
-      <img
-  src={slide}
-  alt={`slide${index + 1}`}
-  className="block w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-contain"
-/>
+      {/* Slider Section */}
+      <section className="carousel w-full rounded-lg overflow-hidden bg-yellow-200 shadow-lg">
+        {slides.map((slide, index) => (
+          index === currentSlide && (
+            <div
+              key={index}
+              className="carousel-item relative w-full"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <img
+                src={slide}
+                alt={`slide${index + 1}`}
+                className="block w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-contain"
+              />
 
-      {/* Navigation buttons */}
-      <div className="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2 z-30">
-        <a href={`#slide${index === 0 ? 3 : index}`} className="btn btn-circle btn-sm sm:btn-md">
-          ❮
-        </a>
-        <a href={`#slide${index === 2 ? 1 : index + 2}`} className="btn btn-circle btn-sm sm:btn-md">
-          ❯
-        </a>
-      </div>
-    </div>
-  ))}
-</section>
-
-
-
+              {/* Navigation buttons */}
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2 z-30">
+                <button
+                  onClick={() =>
+                    setCurrentSlide((prev) => (prev === 0 ? 2 : prev - 1))
+                  }
+                  className="btn btn-circle btn-sm sm:btn-md"
+                >
+                  ❮
+                </button>
+                <button
+                  onClick={() =>
+                    setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1))
+                  }
+                  className="btn btn-circle btn-sm sm:btn-md"
+                >
+                  ❯
+                </button>
+              </div>
+            </div>
+          )
+        ))}
+      </section>
 
       {/* Banner Section */}
-      <section className="mb-8">
+      <section
+        className="mb-8"
+        data-aos="fade-up"
+        data-aos-duration="1200"
+        data-aos-delay="200"
+      >
         <div className="bg-yellow-300 rounded p-6 md:p-10 flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 shadow-lg">
-          <div className="md:flex-1 min-w-0">
+          <div className="md:flex-1 min-w-0" data-aos="fade-right">
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-green-700 font-bold">
-              Play, Learn, and Grow with <strong className="text-blue-900">ToyTopia!</strong>
+              Play, Learn, and Grow with{" "}
+              <strong className="text-blue-900">ToyTopia!</strong>
             </h1>
             <p className="mt-4 text-green-700 font-semibold leading-relaxed text-sm sm:text-base md:text-lg">
               ToyTopia is a vibrant online marketplace where fun meets trust! 🎈
-              We connect families with local toy sellers, helping parents find safe, creative, and affordable toys for their little ones.
+              We connect families with local toy sellers, helping parents find
+              safe, creative, and affordable toys for their little ones.
             </p>
             <Link
               to="/all-toys"
@@ -107,7 +139,10 @@ export default function Home() {
               Explore Toys
             </Link>
           </div>
-          <div className="md:flex-1 flex justify-center md:justify-end">
+          <div
+            className="md:flex-1 flex justify-center md:justify-end"
+            data-aos="fade-left"
+          >
             <img
               src={toyBanner}
               alt="toy banner"
@@ -118,27 +153,41 @@ export default function Home() {
       </section>
 
       {/* Popular Toys Section */}
-      <section>
-        <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-4 text-left text-white">
-          Popular Toys
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <section data-aos="fade-up" data-aos-duration="1000">
+        <h2 className="text-3xl font-bold text-white mb-4">Popular Toys</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {popular.map((toy) => (
-            <ToyCard key={toy.toyId} toy={toy} />
+            <div data-aos="zoom-in" key={toy.toyId}>
+              <ToyCard toy={toy} />
+            </div>
           ))}
         </div>
       </section>
 
       {/* Upcoming Events */}
-      <section className="mt-12 mb-12 p-4 sm:p-6 md:p-8 bg-green-100 rounded shadow">
-        <h2 className="text-2xl sm:text-3xl md:text-3xl text-black font-bold mb-10 text-center ">
+      <section
+        className="mt-12 mb-12 p-4 sm:p-6 md:p-8 bg-green-100 rounded shadow"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <h2 className="text-3xl font-bold text-black mb-10 text-center">
           🎪 Upcoming Events
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 mb-10 gap-6">
-          {events.map((event) => (
-            <div key={event.id} className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition">
-              <img src={event.image} alt={event.name} className="w-full h-40 sm:h-48 object-cover rounded mb-4" />
-              <h3 className="text-xl sm:text-lg md:text-xl font-bold text-orange-600 mb-2">{event.name}</h3>
+          {events.map((event, idx) => (
+            <div
+              key={event.id}
+              data-aos={idx % 2 === 0 ? "fade-right" : "fade-left"}
+              className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition"
+            >
+              <img
+                src={event.image}
+                alt={event.name}
+                className="w-full h-40 sm:h-48 object-cover rounded mb-4"
+              />
+              <h3 className="text-xl font-bold text-orange-600 mb-2">
+                {event.name}
+              </h3>
               <p className="text-gray-700 font-semibold">{event.date}</p>
               <p className="text-gray-600 mb-3">{event.location}</p>
               <Link
@@ -153,19 +202,28 @@ export default function Home() {
       </section>
 
       {/* Featured Sellers */}
-      <section className="mt-12 p-4 sm:p-6 md:p-8 bg-orange-100 rounded shadow">
-        <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6 text-black text-center">
+      <section
+        className="mt-12 p-4 sm:p-6 md:p-8 bg-orange-100 rounded shadow"
+        data-aos="fade-up"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-black text-center">
           🏆 Featured Sellers
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 mb-10 md:grid-cols-3 gap-6">
-          {sellers.map((seller) => (
-            <div key={seller.id} className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition">
+          {sellers.map((seller, idx) => (
+            <div
+              key={seller.id}
+              data-aos={idx % 2 === 0 ? "flip-left" : "flip-right"}
+              className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center hover:shadow-lg transition"
+            >
               <img
                 src={seller.image}
                 alt={seller.name}
                 className="w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 object-cover rounded-full mb-3 border-4 border-orange-400"
               />
-              <h3 className="text-lg sm:text-xl md:text-xl font-bold text-green-700 mb-1">{seller.name}</h3>
+              <h3 className="text-lg sm:text-xl md:text-xl font-bold text-green-700 mb-1">
+                {seller.name}
+              </h3>
               <p className="text-gray-600 mb-2">⭐ {seller.rating} / 5</p>
               <p className="text-gray-700 text-sm sm:text-base">
                 {seller.id === 1

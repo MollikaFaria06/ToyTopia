@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function ForgotPassword() {
   const { resetPassword } = useContext(AuthContext);
@@ -11,6 +13,10 @@ export default function ForgotPassword() {
 
   useEffect(() => {
     document.title = "ToyTopia | Forgot Password";
+  }, []);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   const handleReset = async (e) => {
@@ -33,18 +39,34 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded p-6 shadow">
-      <h2 className="text-3xl text-blue-700 font-bold mb-4">Reset Password</h2>
-      <form onSubmit={handleReset}>
+    <div
+      className="max-w-md mx-auto bg-white rounded p-6 shadow"
+      data-aos="fade-up"
+    >
+      <h2
+        className="text-3xl text-blue-700 font-bold mb-4 text-center"
+        data-aos="fade-down"
+        data-aos-delay="100"
+      >
+        Reset Password
+      </h2>
+      <form className="space-y-4" onSubmit={handleReset}>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="Email"
-          className="input w-full mb-4"
+          className="input w-full"
           required
+          data-aos="fade-right"
+          data-aos-delay="200"
         />
-        <button type="submit" className="btn bg-orange-500 text-white w-full">
+        <button
+          type="submit"
+          className="btn bg-orange-500 text-white w-full"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
           Reset Password
         </button>
       </form>

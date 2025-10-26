@@ -1,22 +1,36 @@
 import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Events() {
   useEffect(() => {
     document.title = "ToyTopia | Events";
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   return (
-    <div className="p-10 bg-yellow-200 min-h-screen">
-      <h1 className="text-4xl font-bold text-center text-green-700 mb-6">
+    <div className="p-10 bg-yellow-200 min-h-screen" data-aos="fade-up">
+      <h1
+        className="text-4xl font-bold text-center text-green-700 mb-6"
+        data-aos="fade-down"
+      >
         🎪 ToyTopia Events
       </h1>
-      <p className="text-center text-gray-700 max-w-2xl mx-auto mb-10">
+      <p
+        className="text-center text-gray-700 max-w-2xl mx-auto mb-10"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
         Discover exciting events and creative workshops for kids across Bangladesh!  
         From toy fairs to learning sessions — ToyTopia brings fun for every little explorer. 🌈
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div
+          className="bg-white rounded-lg shadow-md p-6"
+          data-aos="fade-right"
+          data-aos-delay="300"
+        >
           <h3 className="text-xl font-bold text-orange-600 mb-2">
             Dhaka Kids Toy Fair 2025
           </h3>
@@ -28,7 +42,11 @@ export default function Events() {
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div
+          className="bg-white rounded-lg shadow-md p-6"
+          data-aos="fade-left"
+          data-aos-delay="400"
+        >
           <h3 className="text-xl font-bold text-orange-600 mb-2">
             Creative Toy Workshop
           </h3>

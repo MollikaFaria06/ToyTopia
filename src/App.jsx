@@ -7,14 +7,19 @@ import ToyDetails from "./pages/ToyDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
-import Favorites from "./pages/Favorites";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AllToys from "./pages/AllToys";
 import ForgotPassword from "./pages/ForgetPassword";
 import MyOrders from "./pages/MyOrders";
 import Events from "./pages/Events";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -23,7 +28,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/toy/:id" element={<PrivateRoute><ToyDetails /></PrivateRoute>} />
           <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-          <Route path="/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} /> 

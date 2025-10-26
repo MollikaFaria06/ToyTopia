@@ -16,7 +16,7 @@ export default function Navbar() {
      
       <div className="navbar-start">
         <NavLink to="/" className="text-3xl lg:ml-10 md:ml-5 sm:ml-0 md:text-3xl font-bold text-blue-700 hover:text-blue-800">
-          ToyTopia
+          🧸ToyTopia
         </NavLink>
       </div>
 
