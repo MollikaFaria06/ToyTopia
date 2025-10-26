@@ -71,6 +71,4 @@ npm install swiper aos
 npm install sweetalert2 react-toastify react-icons
 
 
-<div align="center">
 💻 Developed by Faria Alam ✨
-</div> ```
