@@ -70,6 +70,21 @@ npm install swiper aos
 npm install sweetalert2 react-toastify react-icons
 
 ```
+---
+
+## 🚀 How to Run Locally
+
+### Clone repo
+- git clone https://github.com/mollikafaria06/ToyTopia.git
+
+### Frontend
+- cd ToyTopia
+- npm install
+- npm run dev
+
+
+---
+
 ## 💻 Developer
 
 💻 Developed by Faria Alam ✨
